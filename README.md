@@ -9,7 +9,7 @@ Then import the module and run for the channel
 
 ```
 import youtubemeta  
-youtubemeta.scrape('CHANNEL_NAME')
+metadata = youtubemeta.scrape('CHANNEL_NAME')
 ```
 
 Arguments
