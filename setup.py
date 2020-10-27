@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="ytchannel", # Replace with your own username
+    name="ytch", # Replace with your own username
     version="0.0.1",
     author="Chris Taylor",
     description="Download YouTube channel data",
@@ -14,7 +14,7 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
-        "License :: Creative Commons :: CC0 1.0 Universal",
+        "License :: Public Domain",
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.6',
