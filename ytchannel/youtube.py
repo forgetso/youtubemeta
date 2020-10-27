@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import random
-from useragents import user_agent_list
+from ytchannel.useragents import user_agent_list
 import argparse
 import re
 import json
@@ -23,7 +23,7 @@ VARS_START_SPLIT = 'window.ytplayer = {};ytcfg.set('
 VARS_END_SPLIT = ');ytcfg.set("SBOX_LABELS"'
 
 
-def main(channel, write=None, path=None):
+def scrape(channel, write=None, path=None):
     if not path:
         path = Path('youtube-{}.csv'.format(channel))
     else:
@@ -208,7 +208,7 @@ def setup():
                         help="write to file (default filename is youtube_[channel].csv)")
     parser.add_argument('--path', default=None, help="specify file path")
     args = parser.parse_args()
-    main(channel=args.channel, write=args.write, path=args.path)
+    scrape(channel=args.channel, write=args.write, path=args.path)
 
 
 if __name__ == "__main__":
