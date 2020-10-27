@@ -29,7 +29,7 @@ Arguments
   To the extent possible under law,
   <a rel="dct:publisher"
      href="https://github.com/forgetso/youtubemeta">
-    <span property="dct:title">Chris Taylor</span></a>
+    <span property="dct:title">the author</span></a>
   has waived all copyright and related or neighboring rights to
   <span property="dct:title">youtubemeta</span>.
 </p>
