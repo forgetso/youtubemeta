@@ -7,10 +7,14 @@ To get started
 
 Then import the module and run for the channel  
 
-```import ytchannel  
-ytchannel.scrape('CHANNEL_NAME')```
+```
+import ytchannel  
+ytchannel.scrape('CHANNEL_NAME')
+```
 
 Arguments
 
-```-write    write to CSV
--path     specify custom path and filename for the csv```
+```
+--write    write to CSV
+--path     specify custom path and filename for the csv
+```
