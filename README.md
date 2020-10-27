@@ -1,15 +1,15 @@
-# ytch
+# youtubemeta
 Download data from YouTube channels - Video titles, view counts, dates, and URLs
 
 To get started  
 
-`pip install ytch`
+`pip install youtubemeta`
 
 Then import the module and run for the channel  
 
 ```
-import ytch  
-ytch.scrape('CHANNEL_NAME')
+import youtubemeta  
+youtubemeta.scrape('CHANNEL_NAME')
 ```
 
 Arguments
