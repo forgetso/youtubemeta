@@ -13,7 +13,6 @@ import pandas as pd
 from pathlib import Path
 
 URL = 'https://www.youtube.com/user/{}/videos?flow=grid&sort=dd&view=0&app=desktop'
-DATAREGEX = re.compile('ytInitialData', flags=re.MULTILINE)
 # choose a random user agent
 USER_AGENT = random.choice(user_agent_list)
 MORE_URL = 'https://www.youtube.com/browse_ajax?ctoken={}&continuation={}&itct={}'
@@ -52,7 +51,7 @@ def main(channel, write=None, path=None):
 
 def get_more_videos(session, channel, continuation_url, vars_dict):
     print('Loading more videos from {}...'.format(continuation_url))
-    headers = get_headers(channel, continuation_url, vars_dict)
+    headers = get_headers(channel, vars_dict)
     r = session.get(continuation_url, headers=headers)
 
     if failed_response(r.content):
@@ -168,7 +167,8 @@ def get_more_videos_url(grid_renderer):
     return url
 
 
-def get_headers(channel, url, yt_vars):
+def get_headers(channel, yt_vars):
+    previous = '{}/user/{}/videos?flow=grid&sort=dd&view=0'.format(BASE_URL, channel)
     headers = {  # ':authority': 'www.youtube.com',
         # ':method': 'GET',
         # ':path': url.replace(BASE_URL, ''),
@@ -178,13 +178,13 @@ def get_headers(channel, url, yt_vars):
         'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8',
         'cache-control': 'no-cache',
         'pragma': 'no-cache',
-        'referer': 'https://www.youtube.com/user/{}/videos?flow=grid&sort=dd&view=0'.format(channel),
+        'referer': previous,
         'sec-fetch-dest': 'empty',
         'sec-fetch-mode': 'cors',
         'sec-fetch-site': 'same-origin',
         'user-agent': USER_AGENT,
-        'x-spf-previous': 'https://www.youtube.com/user/{}/videos?flow=grid&sort=dd&view=0'.format(channel),
-        'x-spf-referer': 'https://www.youtube.com/user/{}/videos?flow=grid&sort=dd&view=0'.format(channel),
+        'x-spf-previous': previous,
+        'x-spf-referer': previous,
         'x-youtube-ad-signals': 'dt={}&flash=0&frm&u_tz=60&u_his=8&u_java&u_h=1080&u_w=1920&u_ah=1080&u_aw=1920&u_cd=24&u_nplug=2&u_nmime=2&bc=31&bih=980&biw=609&brdim=1920%2C0%2C1920%2C0%2C1920%2C0%2C1920%2C1080%2C624%2C980&vis=1&wgl=true&ca_type=image'.format(
             calendar.timegm(time.gmtime())),
         'x-youtube-client-name': '1',
