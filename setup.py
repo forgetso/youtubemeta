@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="youtubemeta", # Replace with your own username
-    version="0.0.1",
+    version="0.0.2",
     author="Chris Taylor",
     description="Download YouTube channel data",
     long_description=long_description,
